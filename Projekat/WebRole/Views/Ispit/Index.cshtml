@@ -1,0 +1,46 @@
+﻿@model IEnumerable<ManipulacijaPodacima.Ispit>
+@{
+    ViewBag.Title = "Index";
+}
+<h2>
+    Prikaz svih ispita
+</h2>
+<p>
+    @Html.ActionLink("Napravi novi ispit", "Napravi","Ispit")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            ID ispita
+        </th>
+        <th>
+            Datum
+        </th>
+        <th>
+            Polozen
+        </th>
+
+
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdIspita)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Datum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Polozen)
+            </td>
+
+            <td>
+                @Html.ActionLink("Azuriraj", "Modifikovanje", new { idIspita = item.IdIspita })
+                @Html.ActionLink("Obrisi", "ObrisiIspit", new { idIspita = item.IdIspita})
+            </td>
+        </tr>
+    }
+</table>
+

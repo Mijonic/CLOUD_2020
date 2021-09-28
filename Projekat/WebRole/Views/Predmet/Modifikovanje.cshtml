@@ -1,0 +1,45 @@
+﻿@model ManipulacijaPodacima.Predmet
+@{
+    ViewBag.Title = "DodavanjePredmeta";
+}
+<h2>Azuriranje predmeta</h2>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+@using (Html.BeginForm("ModifikujPredmet", "Predmet", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Predmet</legend>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.OznakaPredmeta)
+        </div>
+        <div class="editor-field">
+
+            @Html.TextBoxFor(model => model.OznakaPredmeta, new { @readonly = "readonly" })
+
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NazivPredmeta)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NazivPredmeta)
+            @Html.ValidationMessageFor(model => model.NazivPredmeta)
+        </div>
+
+
+        <p>
+            <input type="submit" value="Azuriraj predmet" />
+
+        </p>
+    </fieldset>
+}
+
+
+<div>
+    @Html.ActionLink("Povratak na prikaz predmeta", "Index")
+</div>

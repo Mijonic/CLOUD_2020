@@ -1,0 +1,46 @@
+﻿@model IEnumerable<ManipulacijaPodacima.Student>
+@{
+    ViewBag.Title = "Index";
+}
+<h2>
+    Prikaz svih studenata
+</h2>
+<p>
+    @Html.ActionLink("Napravi novog studenta", "Napravi")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Indeks
+        </th>
+        <th>
+            Ime
+        </th>
+        <th>
+            Prezime
+        </th>
+        
+       
+        
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Index)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prezime)
+            </td>
+           
+            <td>
+                @Html.ActionLink("Azuriraj", "Modifikovanje", new { index = item.Index })
+                @Html.ActionLink("Obrisi", "ObrisiStudenta", new { index = item.Index})
+            </td>
+        </tr>
+    }
+</table>
+

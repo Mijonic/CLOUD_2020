@@ -1,0 +1,41 @@
+﻿@model IEnumerable<ManipulacijaPodacima.Predmet>
+@{
+    ViewBag.Title = "Index";
+}
+<h2>
+    Prikaz svih predmeta
+</h2>
+<p>
+    @Html.ActionLink("Napravi novi predmet", "Napravi","Predmet")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Oznaka
+        </th>
+        <th>
+            Naziv
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OznakaPredmeta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NazivPredmeta)
+            </td>
+           
+
+            <td>
+                @Html.ActionLink("Azuriraj", "Modifikovanje",new { oznakaPredmeta = item.OznakaPredmeta})
+                @Html.ActionLink("Obrisi", "ObrisiPredmet", new { oznakaPredmeta = item.OznakaPredmeta })
+               
+            </td>
+        </tr>
+    }
+</table>
+

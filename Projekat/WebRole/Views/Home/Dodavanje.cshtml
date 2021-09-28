@@ -1,0 +1,50 @@
+﻿@model ManipulacijaPodacima.Student
+@{
+    ViewBag.Title = "DodavanjeStudenta";
+}
+<h2>Dodavanje novog studenta</h2>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+@using (Html.BeginForm("Dodavanje", "Home", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Student</legend>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Index)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Index)
+            @Html.ValidationMessageFor(model => model.Index)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Ime)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Ime)
+            @Html.ValidationMessageFor(model => model.Ime)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Prezime)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Prezime)
+            @Html.ValidationMessageFor(model => model.Prezime)
+        </div>
+
+        <p>
+            <input type="submit" value="Kreiraj studenta" />
+
+        </p>
+    </fieldset>
+}
+
+
+<div>
+    @Html.ActionLink("Povratak na prikaz studenta", "Index")
+</div>
